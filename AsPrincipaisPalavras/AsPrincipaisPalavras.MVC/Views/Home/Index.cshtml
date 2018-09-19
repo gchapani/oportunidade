@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Minuto Seguros";
+    int contador = 0;
+}
+
+<h2>Minuto Seguros</h2>
+
+<div class="row">
+    @{
+        <table border="1" style="width: 450px;">
+            <tr>
+                <td colspan="2" style="text-align:center;"><h4>Palavras mais usadas</h4></td>
+            </tr>
+            <tr>
+                <td style="text-align:center; width:65%;"><b>Palavra</b></td>
+                <td style="text-align:center; width:35%;"><b>Total de registros</b></td>
+            </tr>
+
+            @foreach (KeyValuePair<string, int> palavra in ViewBag.Palavras)
+            {
+                <tr>
+                    <td>@palavra.Key</td>
+                    <td style="text-align:right;">@palavra.Value</td>
+                </tr>
+
+                contador++;
+
+                if (contador >= 10)
+                {
+                    break;
+                }
+            }
+
+        </table>
+    }
+
+    <br />
+
+    @{
+        <table border="1" style="width: 750px;">
+            <tr>
+                <td colspan="2" style="text-align:center;"><h4>Total de palavras por Tópico</h4></td>
+            </tr>
+            <tr>
+                <td style="text-align:center; width:80%;"><b>Tópico</b></td>
+                <td style="text-align:center; width:20%;"><b>Total de registros</b></td>
+            </tr>
+
+            @foreach (KeyValuePair<string, int> topico in ViewBag.TopicoPalavras)
+            {
+                <tr>
+                    <td>@topico.Key</td>
+                    <td style="text-align:right;">@topico.Value</td>
+                </tr>
+            }
+
+        </table>
+    }
+</div>
